@@ -3,14 +3,14 @@ import numpy as np
 from PIL import Image, ImageDraw
 import random
 import cvzone
-import cv2 
+
 
 mouth_cascade = cv.CascadeClassifier('haarcascade_mcs_mouth.xml')
 faceDetector  = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
 eyeDetector   = cv.CascadeClassifier("haarcascade_eye.xml")
 
 stickerMouth = cv.imread("images/1.png"  ,cv.IMREAD_UNCHANGED)
-sticker      = cv2.imread("images/2.jpg" ,cv2.IMREAD_UNCHANGED)
+sticker      = cv.imread("images/2.jpg" ,cv.IMREAD_UNCHANGED)
 stickerEye   = cv.imread("images/result.png"    ,cv.IMREAD_UNCHANGED)
 
 
@@ -79,8 +79,11 @@ while True:
             for eye in eyes:
                 for eye in eyes:
                     xe,ye,we,he = eye
-                    stickerEye=cv2.resize(stickerEye,(we+5,he+5))
-
+                    #resize the glasses so that they fit Hermione perfectly
+                    stickerEye=cv.resize(stickerEye,(we+5,he+5))
+#we simply have to replace the pixels of the image of Hermione with the pixels of the stickerEye.
+#To do that we use 2 for loops. If the pixel on the stickerEye image is 0 that means, 
+#we want that portion to be transparent, so we do not replace that pixel
                     for i in range(stickerEye.shape[0]):
                         for j in range(stickerEye.shape[1]):
                             if (stickerEye[i,j,3]>0):
@@ -119,5 +122,5 @@ while True:
 
 
         
-        cv2.imshow("frame", frame)
+        cv.imshow("frame", frame)
 
