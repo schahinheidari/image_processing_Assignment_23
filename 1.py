@@ -49,12 +49,12 @@ while True:
         break
 
     
-    cv.rectangle(frame, (0, 0), (275, 95), (0,0,0), -1)
-    cv.putText(frame, 'press key 1: Place a non-square sticker on the face', (10, 10), font, fontSize, textColor, thickness)
-    cv.putText(frame, 'press key 2: Place the sticker on the eyes and lips', (10, 30), font, fontSize, textColor, thickness)
-    cv.putText(frame, 'press key 3: Place a blur on the face',               (10, 50), font, fontSize, textColor, thickness)
-    cv.putText(frame, 'press key 4: edge detection on the face',             (10, 70), font, fontSize, textColor, thickness)
-    cv.putText(frame, 'press key 5: rotate video by 45 degrees',             (10, 90), font, fontSize, textColor, thickness)
+    #cv.rectangle(frame, (0, 0), (275, 95), (0,0,0), -1)
+    #cv.putText(frame, 'press key 1: Place a non-square sticker on the face', (10, 10), font, fontSize, textColor, thickness)
+    #cv.putText(frame, 'press key 2: Place the sticker on the eyes and lips', (10, 30), font, fontSize, textColor, thickness)
+    #cv.putText(frame, 'press key 3: Place a blur on the face',               (10, 50), font, fontSize, textColor, thickness)
+    #cv.putText(frame, 'press key 4: edge detection on the face',             (10, 70), font, fontSize, textColor, thickness)
+    #cv.putText(frame, 'press key 5: rotate video by 45 degrees',             (10, 90), font, fontSize, textColor, thickness)
     
     key = cv.waitKey(100)
 
