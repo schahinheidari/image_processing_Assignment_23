@@ -77,9 +77,15 @@ while True:
         elif key == 50: # press key 2 ASCII
             
             for eye in eyes:
-                xe,ye,we,he = eye
-                sticker_resized = cv.resize(stickerEye, (we, he))
-                frame = cvzone.overlayPNG(frame, sticker_resized, [xe, ye])
+                for eye in eyes:
+                    xe,ye,we,he = eye
+                    stickerEye=cv2.resize(stickerEye,(we+5,he+5))
+
+                    for i in range(stickerEye.shape[0]):
+                        for j in range(stickerEye.shape[1]):
+                            if (stickerEye[i,j,3]>0):
+                                frame[ye+i-5,xe+j-8, :]=stickerEye[i,j,:-1]
+
             
             for lips in mouth:
                 xl,yl,wl,hl = lips
@@ -108,6 +114,8 @@ while True:
             # rotate our image by 45 degrees around the center of the image
             M = cv.getRotationMatrix2D((cX, cY), 45, 1.0)
             frame = cv.warpAffine(frame, M, (w, h))
+            
+
 
 
         
