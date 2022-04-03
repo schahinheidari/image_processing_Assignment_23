@@ -1,7 +1,6 @@
 import cv2 as cv
 import numpy as np
 from PIL import Image, ImageDraw
-import random
 import cvzone
 
 
@@ -49,12 +48,13 @@ while True:
         break
 
     
-    #cv.rectangle(frame, (0, 0), (275, 95), (0,0,0), -1)
-    #cv.putText(frame, 'press key 1: Place a non-square sticker on the face', (10, 10), font, fontSize, textColor, thickness)
-    #cv.putText(frame, 'press key 2: Place the sticker on the eyes and lips', (10, 30), font, fontSize, textColor, thickness)
-    #cv.putText(frame, 'press key 3: Place a blur on the face',               (10, 50), font, fontSize, textColor, thickness)
-    #cv.putText(frame, 'press key 4: edge detection on the face',             (10, 70), font, fontSize, textColor, thickness)
-    #cv.putText(frame, 'press key 5: rotate video by 45 degrees',             (10, 90), font, fontSize, textColor, thickness)
+    cv.rectangle(frame, (0, 0), (275, 115), (0,0,0), -1)
+    cv.putText(frame, 'press key 1: Place a non-square sticker on the face', (10, 10), font, fontSize, textColor, thickness)
+    cv.putText(frame, 'press key 2: Place the sticker on the eyes and lips', (10, 30), font, fontSize, textColor, thickness)
+    cv.putText(frame, 'press key 3: Place a blur on the face',               (10, 50), font, fontSize, textColor, thickness)
+    cv.putText(frame, 'press key 4: edge detection on the face',             (10, 70), font, fontSize, textColor, thickness)
+    cv.putText(frame, 'press key 5: rotate video by 45 degrees',             (10, 90), font, fontSize, textColor, thickness)
+    cv.putText(frame, 'press key 6: censored face',                          (10, 110), font, fontSize, textColor, thickness)
     
     key = cv.waitKey(100)
 
@@ -117,6 +117,15 @@ while True:
             # rotate our image by 45 degrees around the center of the image
             M = cv.getRotationMatrix2D((cX, cY), 45, 1.0)
             frame = cv.warpAffine(frame, M, (w, h))
+
+        elif key == 54 : # press key 6 ASCII ==> censored face
+            for face in faces:
+                x,y,w,h = face
+                #Produces a censoredboard of face with a length of 25*25
+                shape  = cv.resize(frame[y:y+h,x:x+w], (25,25))
+                #When used for zooming into the image, it uses the INTER_NEAREST method
+            censoreFace = cv.resize(shape, (w, h), interpolation=cv.INTER_NEAREST)
+            frame[y:y+h, x:x+h] = censoreFace
             
 
 
