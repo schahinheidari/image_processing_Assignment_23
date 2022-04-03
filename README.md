@@ -7,8 +7,9 @@
   - Place a non-square sticker on the face
   - Place the sticker on the eyes and lips
   - Place a blur on the face
-  - edge detection on the face
-  - rotate video by 45 degrees
+  - Edge detection on the face
+  - Rotate video by 45 degrees
+  - Fade face
 
 - [x] **Emoji on Face**                
 <a href="url"><img src="images/23-1.png" align="center" height="500" width="500" ></a>
