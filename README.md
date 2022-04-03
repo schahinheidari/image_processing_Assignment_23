@@ -28,3 +28,6 @@
 
 - [x] **Rotate face by 45 degrees around the center of the image**       
 <a href="url"><img src="images/23-5.png" align="center" height="500" width="500" ></a>
+
+- [x] **Fade face, used for zooming into the image, it uses the INTER_NEAREST method**       
+<a href="url"><img src="images/23-6.png" align="center" height="500" width="500" ></a>
